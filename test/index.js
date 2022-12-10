@@ -5,7 +5,8 @@ const normalizeAddress = sigUtil.normalize;
 const sinon = require('sinon');
 const Wallet = require('ethereumjs-wallet').default;
 
-const KeyringController = require('..');
+const { KeyringController, keyringBuilderFactory } = require('..');
+const { KeyringMockWithInit } = require('./lib/mock-keyring');
 const mockEncryptor = require('./lib/mock-encryptor');
 
 const password = 'password123';
@@ -33,6 +34,7 @@ describe('KeyringController', function () {
   beforeEach(async function () {
     keyringController = new KeyringController({
       encryptor: mockEncryptor,
+      keyringBuilders: [keyringBuilderFactory(KeyringMockWithInit)],
     });
 
     await keyringController.createNewVaultAndKeychain(password);
@@ -91,6 +93,19 @@ describe('KeyringController', function () {
 
       await keyringController.submitPassword(password);
       expect(spy.calledOnce).toBe(true);
+    });
+  });
+
+  describe('persistAllKeyrings', function () {
+    it('should persist keyrings in _unsupportedKeyrings array', async function () {
+      const unsupportedKeyring = 'DUMMY_KEYRING';
+      keyringController._unsupportedKeyrings = [unsupportedKeyring];
+      await keyringController.persistAllKeyrings();
+
+      const { vault } = keyringController.store.getState();
+      const keyrings = await mockEncryptor.decrypt(password, vault);
+      expect(keyrings.indexOf(unsupportedKeyring) > -1).toBe(true);
+      expect(keyrings).toHaveLength(2);
     });
   });
 
@@ -227,6 +242,18 @@ describe('KeyringController', function () {
       const allAccounts = await keyringController.getAccounts();
       expect(allAccounts).toHaveLength(3);
     });
+
+    it('should call init method if available', async function () {
+      const initSpy = sinon.spy(KeyringMockWithInit.prototype, 'init');
+
+      const keyring = await keyringController.addNewKeyring(
+        'Keyring Mock With Init',
+      );
+
+      expect(keyring).toBeInstanceOf(KeyringMockWithInit);
+
+      sinon.assert.calledOnce(initSpy);
+    });
   });
 
   describe('restoreKeyring', function () {
@@ -244,6 +271,13 @@ describe('KeyringController', function () {
 
       const accounts = await keyring.getAccounts();
       expect(accounts[0]).toBe(walletOneAddresses[0]);
+    });
+    it('should return undefined if keyring type is not supported.', async function () {
+      const unsupportedKeyring = { type: 'Ledger Keyring', data: 'DUMMY' };
+      const keyring = await keyringController.restoreKeyring(
+        unsupportedKeyring,
+      );
+      expect(keyring).toBeUndefined();
     });
   });
 
@@ -329,6 +363,16 @@ describe('KeyringController', function () {
       keyrings.forEach((keyring) => {
         expect(keyring.wallets).toHaveLength(1);
       });
+    });
+    it('add serialized keyring to _unsupportedKeyrings array if keyring type is not known', async function () {
+      const _unsupportedKeyrings = [{ type: 'Ledger Keyring', data: 'DUMMY' }];
+      mockEncryptor.encrypt(password, _unsupportedKeyrings);
+      await keyringController.setLocked();
+      const keyrings = await keyringController.unlockKeyrings(password);
+      expect(keyrings).toHaveLength(0);
+      expect(keyringController._unsupportedKeyrings).toStrictEqual(
+        _unsupportedKeyrings,
+      );
     });
   });
 

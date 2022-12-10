@@ -462,6 +462,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ethereumjs/rlp@npm:^4.0.0-beta.2":
+  version: 4.0.0
+  resolution: "@ethereumjs/rlp@npm:4.0.0"
+  bin:
+    rlp: bin/rlp
+  checksum: 407dfb8b1e09b4282e6be561e8d74f8939da78f460c08456c7ba2fb273fc42ee16027955a07085abfd7600ffb466c4c4add159885e67abb91bc85db9dd81ffb5
+  languageName: node
+  linkType: hard
+
+"@ethereumjs/util@npm:^8.0.0":
+  version: 8.0.2
+  resolution: "@ethereumjs/util@npm:8.0.2"
+  dependencies:
+    "@ethereumjs/rlp": ^4.0.0-beta.2
+    async: ^3.2.4
+    ethereum-cryptography: ^1.1.2
+  checksum: 652a40f9dffb9ed749c8adff21c924dec7a6d38129e480ab35ae2e56644bb6e49fcdb5f0cd0451fb6878de7e16cf117e87e34ba01f311bf216b4a8dd5b23aa90
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -715,8 +735,8 @@ __metadata:
   linkType: hard
 
 "@metamask/auto-changelog@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@metamask/auto-changelog@npm:3.0.0"
+  version: 3.1.0
+  resolution: "@metamask/auto-changelog@npm:3.1.0"
   dependencies:
     diff: ^5.0.0
     execa: ^5.1.1
@@ -724,7 +744,7 @@ __metadata:
     yargs: ^17.0.1
   bin:
     auto-changelog: dist/cli.js
-  checksum: ee6f41b466e8f0deb8bc454936513602c4767b7be94f704da3579e3100154c92779dcfde542076158138d5fcfb64ce491ab7fc30248ae097c7d903be0cad9fb4
+  checksum: cd3c833100c19a80e0b7ae8c174fbbe225700eef5fbabd9b0d6c4b439c8af839792111a17d9ddf2e1939839736413afd7402d2cc08ece373622b5a410da5e9fe
   languageName: node
   linkType: hard
 
@@ -741,9 +761,9 @@ __metadata:
   linkType: hard
 
 "@metamask/browser-passworder@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@metamask/browser-passworder@npm:4.0.1"
-  checksum: 17bd1d9448b02cdc4f623612ef20298aa829db387a5a1e127ac2cd6108b2bfc1b6b9ca861a61537f6871a926c6906ba4e9291a63ad093e1c574309289efb5dbd
+  version: 4.0.2
+  resolution: "@metamask/browser-passworder@npm:4.0.2"
+  checksum: 997c330b1c72f7135d0fd2a7f4b0dce37b3c2e6b30e92f048fa8d4f8c949f5b669dcc3064790f41df30ee2e53a9e64a812df72e00527736be704cce2cf4f6e49
   languageName: node
   linkType: hard
 
@@ -805,6 +825,53 @@ __metadata:
     tweetnacl: ^1.0.3
     tweetnacl-util: ^0.15.1
   checksum: 740df4c92a1282e6be4c00c86c1a8ccfb93e767596e43f6da895aa5bab4a28fc3c2209f0327db34924a4a1e9db72bc4d3dddfcfc45cca0b218c9ccbf7d1b1445
+  languageName: node
+  linkType: hard
+
+"@metamask/eth-sig-util@npm:^5.0.1":
+  version: 5.0.2
+  resolution: "@metamask/eth-sig-util@npm:5.0.2"
+  dependencies:
+    "@ethereumjs/util": ^8.0.0
+    bn.js: ^4.11.8
+    ethereum-cryptography: ^1.1.2
+    ethjs-util: ^0.1.6
+    tweetnacl: ^1.0.3
+    tweetnacl-util: ^0.15.1
+  checksum: 1fbf1a0f5e654058f0219c9018dbebadf53036c9c3b47c8faf1cac54816532bb18996821736f526ac4e3d579afcaf502af4ad07e88158a50f015141858b08a90
+  languageName: node
+  linkType: hard
+
+"@metamask/eth-simple-keyring@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@metamask/eth-simple-keyring@npm:5.0.0"
+  dependencies:
+    "@ethereumjs/util": ^8.0.0
+    "@metamask/eth-sig-util": ^5.0.1
+    ethereum-cryptography: ^1.1.2
+    randombytes: ^2.1.0
+  checksum: 6fd05173531b84f6fb816b90ab8cfb176ac3300f07daa51c4adac673fa17dbcc6ce1ebdf064b9f66549f37476bbc54eb2dd9d28935d57654ef62b935a1e31e1d
+  languageName: node
+  linkType: hard
+
+"@noble/hashes@npm:1.1.2":
+  version: 1.1.2
+  resolution: "@noble/hashes@npm:1.1.2"
+  checksum: 3c2a8cb7c2e053811032f242155d870c5eb98844d924d69702244d48804cb03b42d4a666c49c2b71164420d8229cb9a6f242b972d50d5bb2f1d673b98b041de2
+  languageName: node
+  linkType: hard
+
+"@noble/hashes@npm:~1.1.1":
+  version: 1.1.4
+  resolution: "@noble/hashes@npm:1.1.4"
+  checksum: 663c1e7ebaa3ca4ff836c799a9dd697fda861ae8b9923a4850659fbf5c3d5f7cf541e77aee3c1bcc6f81a815b7f88fad75c004c0f30eda301deeedc2c9435368
+  languageName: node
+  linkType: hard
+
+"@noble/secp256k1@npm:1.6.3, @noble/secp256k1@npm:~1.6.0":
+  version: 1.6.3
+  resolution: "@noble/secp256k1@npm:1.6.3"
+  checksum: 16eb3242533e645deb64444c771515f66bdc2ee0759894efd42fdeed4ab226ed29827aaaf6caa27d3d95b831452fd4246aa1007cd688aa462ad48fc084ab76e6
   languageName: node
   linkType: hard
 
@@ -881,6 +948,34 @@ __metadata:
     node-gyp: ^7.1.0
     read-package-json-fast: ^2.0.1
   checksum: 734f7d4bec07d723276e0351d180a83735313823685c5c79b1f56e32d77622e1bd0c5cd0fbeca9649f1e559212a4ccc8e450b1f3d6dea9cadabb442f1f13bfe8
+  languageName: node
+  linkType: hard
+
+"@scure/base@npm:~1.1.0":
+  version: 1.1.1
+  resolution: "@scure/base@npm:1.1.1"
+  checksum: b4fc810b492693e7e8d0107313ac74c3646970c198bbe26d7332820886fa4f09441991023ec9aa3a2a51246b74409ab5ebae2e8ef148bbc253da79ac49130309
+  languageName: node
+  linkType: hard
+
+"@scure/bip32@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@scure/bip32@npm:1.1.0"
+  dependencies:
+    "@noble/hashes": ~1.1.1
+    "@noble/secp256k1": ~1.6.0
+    "@scure/base": ~1.1.0
+  checksum: e6102ab9038896861fca5628b8a97f3c4cb24a073cc9f333c71c747037d82e4423d1d111fd282ba212efaf73cbc5875702567fb4cf13b5f0eb23a5bab402e37e
+  languageName: node
+  linkType: hard
+
+"@scure/bip39@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@scure/bip39@npm:1.1.0"
+  dependencies:
+    "@noble/hashes": ~1.1.1
+    "@scure/base": ~1.1.0
+  checksum: c4361406f092a45e511dc572c89f497af6665ad81cb3fd7bf78e6772f357f7ae885e129ef0b985cb3496a460b4811318f77bc61634d9b0a8446079a801b6003c
   languageName: node
   linkType: hard
 
@@ -1499,6 +1594,13 @@ __metadata:
   version: 2.0.0
   resolution: "astral-regex@npm:2.0.0"
   checksum: 876231688c66400473ba505731df37ea436e574dd524520294cc3bbc54ea40334865e01fa0d074d74d036ee874ee7e62f486ea38bc421ee8e6a871c06f011766
+  languageName: node
+  linkType: hard
+
+"async@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "async@npm:3.2.4"
+  checksum: 43d07459a4e1d09b84a20772414aa684ff4de085cbcaec6eea3c7a8f8150e8c62aa6cd4e699fe8ee93c3a5b324e777d34642531875a0817a35697522c1b02e89
   languageName: node
   linkType: hard
 
@@ -2754,6 +2856,7 @@ __metadata:
     "@metamask/eslint-config-jest": ^7.0.0
     "@metamask/eslint-config-nodejs": ^7.0.1
     "@metamask/eth-hd-keyring": ^4.0.2
+    "@metamask/eth-simple-keyring": ^5.0.0
     eslint: ^7.29.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: ^2.23.4
@@ -2761,7 +2864,6 @@ __metadata:
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^3.4.0
     eth-sig-util: ^3.0.1
-    eth-simple-keyring: ^4.2.0
     ethereumjs-wallet: ^1.0.1
     jest: ^27.0.6
     obs-store: ^4.0.3
@@ -2815,6 +2917,18 @@ __metadata:
     secp256k1: ^4.0.1
     setimmediate: ^1.0.5
   checksum: 54bae7a4a96bd81398cdc35c91cfcc74339f71a95ed1b5b694663782e69e8e3afd21357de3b8bac9ff4877fd6f043601e200a7ad9133d94be6fd7d898ee0a449
+  languageName: node
+  linkType: hard
+
+"ethereum-cryptography@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "ethereum-cryptography@npm:1.1.2"
+  dependencies:
+    "@noble/hashes": 1.1.2
+    "@noble/secp256k1": 1.6.3
+    "@scure/bip32": 1.1.0
+    "@scure/bip39": 1.1.0
+  checksum: 0ef55f141acad45b1ba1db58ce3d487155eb2d0b14a77b3959167a36ad324f46762873257def75e7f00dbe8ac78aabc323d2207830f85e63a42a1fb67063a6ba
   languageName: node
   linkType: hard
 
@@ -4902,11 +5016,11 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "minimatch@npm:3.0.4"
+  version: 3.1.2
+  resolution: "minimatch@npm:3.1.2"
   dependencies:
     brace-expansion: ^1.1.7
-  checksum: 66ac295f8a7b59788000ea3749938b0970344c841750abd96694f80269b926ebcafad3deeb3f1da2522978b119e6ae3a5869b63b13a7859a456b3408bd18a078
+  checksum: c154e566406683e7bcb746e000b84d74465b3a832c45d59912b9b55cd50dee66e5c4b1e5566dba26154040e51672f9aa450a9aef0c97cfc7336b78b7afb9540a
   languageName: node
   linkType: hard
 
@@ -5702,9 +5816,9 @@ __metadata:
   linkType: hard
 
 "qs@npm:~6.5.2":
-  version: 6.5.2
-  resolution: "qs@npm:6.5.2"
-  checksum: 24af7b9928ba2141233fba2912876ff100403dba1b08b20c3b490da9ea6c636760445ea2211a079e7dfa882a5cf8f738337b3748c8bdd0f93358fa8881d2db8f
+  version: 6.5.3
+  resolution: "qs@npm:6.5.3"
+  checksum: 6f20bf08cabd90c458e50855559539a28d00b2f2e7dddcb66082b16a43188418cb3cb77cbd09268bcef6022935650f0534357b8af9eeb29bf0f27ccb17655692
   languageName: node
   linkType: hard
 
